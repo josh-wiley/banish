@@ -1,48 +1,48 @@
 {
-	"name": "PyTorch CUDA",
-	"build": {
-	  "dockerfile": "Dockerfile",
-	  "context": "..",
-	  "args": {
-		"PYTHON_VERSION": "3.10",
-		"POETRY_VERSION": "1.1.14"
-	  }
-	},
-	"runArgs": ["--gpus=all"],
-	"customizations": {
-	  "vscode": {
-		"settings": {
-		  "python.defaultInterpreterPath": "/usr/local/bin/python",
-		  "python.linting.enabled": true,
-		  "python.linting.pylintEnabled": true,
-		  "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-		  "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		  "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-		  "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-		  "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		  "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		  "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-		  "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		  "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
-		},
-		"extensions": [
-		  "ms-python.python",
-		  "ms-python.vscode-pylance",
-		  "ms-azuretools.vscode-docker",
-		  "ms-toolsai.jupyter",
-		  "github.copilot",
-		  "tamasfe.even-better-toml",
-		  "esbenp.prettier-vscode"
-		]
-	  }
-	},
-	"postCreateCommand": "poetry install && pip install fastai",
-	"remoteUser": "vscode",
-	"features": {
-	  "aws-cli": "latest",
-	  "ghcr.io/devcontainers/features/nvidia-cuda:1": {
-		"installCudnn": true
-	  }
-	}
+  "name": "PyTorch CUDA",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "PYTHON_VERSION": "3.10",
+      "POETRY_VERSION": "1.1.14"
+    }
+  },
+  "runArgs": ["--gpus=all"],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+        "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+        "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+        "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+        "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+        "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+        "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "github.copilot",
+        "tamasfe.even-better-toml",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "postCreateCommand": "poetry install",
+  "remoteUser": "vscode",
+  "features": {
+    "aws-cli": "latest",
+    "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+      "installCudnn": true
+    }
   }
-  
+}
