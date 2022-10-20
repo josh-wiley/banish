@@ -10,7 +10,7 @@ from torch.nn import Module, Embedding, Linear, BatchNorm1d, Tanh
 # TODO: use stddev and other statistics to determine hidden layer size
 
 
-class NumericModel(Module):
+class Numeric(Module):
     def __init__(self, columns: int):
         super().__init__()
 
@@ -27,7 +27,8 @@ class NumericModel(Module):
         self.activation2 = Tanh()
 
         # output layer
-        self.linear3 = Linear(hidden_size, columns)
+        self.linear3 = Linear(hidden_size, columns, bias=False)
+        self.batchnorm3 = BatchNorm1d(columns)
 
     def forward(self, x: Tensor) -> Tensor:
         # input layer
@@ -42,5 +43,6 @@ class NumericModel(Module):
 
         # output layer
         x = self.linear3(x)
+        x = self.batchnorm3(x)
 
         return x
